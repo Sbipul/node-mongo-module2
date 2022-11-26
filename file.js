@@ -3,12 +3,29 @@ const fs = require("fs");
 
 const server = http.createServer(function (req, res) {
   if (req.url == "/") {
-    fs.readFile("./data.text", (err, data) => {
+    //============================================================= async read file
+    // fs.readFile("./data.text", (err, data) => {
+    //   if (err) {
+    //     res.write("failed to read data");
+    //     res.end();
+    //   } else {
+    //     res.write(data);
+    //     res.end();
+    //   }
+    // });
+    //============================================================== sync read file
+    // const data = fs.readFileSync("./data.text");
+    // res.write(data);
+    // res.end();
+
+    //================================================= existing file write async way
+    const newData = "This is new data to test if data is change or not";
+    fs.writeFile("./data.text", newData, (err) => {
       if (err) {
-        res.write("failed to read data");
+        res.write("Failed to write data");
         res.end();
       } else {
-        res.write(data);
+        res.write("Data written successfully");
         res.end();
       }
     });
