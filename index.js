@@ -31,9 +31,13 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-type": "text/html" });
     res.write("<p>This is contact page</p>");
     res.end();
-  } else if (req.url == "details") {
+  } else if (req.url == "/details") {
     res.writeHead(200, { "Content-type": "text/html" });
     res.write("<p>This is details page</p>");
+    res.end();
+  } else if (req.url == "/data") {
+    res.writeHead(200, { "Content-type": "application/json" });
+    res.write(JSON.stringify({ name: "bipul chandro roy" }));
     res.end();
   } else {
     res.writeHead(200, { "Content-type": "text/html" });
